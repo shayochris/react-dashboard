@@ -1,0 +1,40 @@
+import type { SelectFieldProps } from "#/components/form-controls/select-field";
+import type { TextFieldProps } from "@/components/form-controls/text-field";
+import type { FieldValues } from "react-hook-form";
+
+/***
+ * All fields supported in form fields generator
+ */
+export type FieldType = "text-field" | "select-field";
+
+interface TextInputFieldProps<
+    TFieldValues extends FieldValues = FieldValues,
+> extends TextFieldProps<TFieldValues> {
+    /** Discriminant that identifies this as a text field */
+    inputType: "text-field";
+}
+
+interface SelectInputFieldProps<
+    TFieldValues extends FieldValues = FieldValues,
+> extends SelectFieldProps<TFieldValues> {
+    /** Discriminant that identifies this as a select field */
+    inputType: "select-field";
+}
+
+type FormFieldPropsMapping = {
+    "text-field": TextInputFieldProps;
+    "select-field": SelectInputFieldProps;
+};
+
+export type FormFieldProps<T extends FieldType> = FormFieldPropsMapping[T];
+
+export type FormField<TfieldValues extends FieldValues = FieldValues> =
+    | TextInputFieldProps<TfieldValues>
+    | SelectInputFieldProps<TfieldValues>;
+
+export type BasicFormFieldProps = {
+    disabled?: boolean;
+    hidden?: boolean;
+    label?: string;
+    placeholder?: string;
+};
