@@ -6,6 +6,7 @@ import type { FormField } from "#/components/form-controls/types";
 const LoginFormSchema = z.object({
     username: z.string().min(1, { message: "Username is required" }),
     branch: z.string({ message: "Branch is required" }),
+    birthday: z.string({ message: "birthday is required" }),
 });
 
 export type LoginFormType = z.infer<typeof LoginFormSchema>;
@@ -42,6 +43,13 @@ export const useManageLoginForm = () => {
                     value: "branch2",
                 },
             ],
+        },
+        {
+            control,
+            label: "Birth Day",
+            name: "birthday",
+            placeholder: "Enter your birthday",
+            inputType: "date-field",
         },
     ];
 

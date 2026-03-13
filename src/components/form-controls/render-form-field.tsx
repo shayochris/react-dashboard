@@ -1,3 +1,4 @@
+import { DateField } from "#/components/form-controls/date-field";
 import { SelectField } from "#/components/form-controls/select-field";
 import TextField from "@/components/form-controls/text-field";
 import type { FormField } from "@/components/form-controls/types";
@@ -11,6 +12,8 @@ export const RenderFormField = <TFieldValues extends FieldValues = FieldValues>(
             return <TextField {...props} />;
         case "select-field":
             return <SelectField {...props} />;
+        case "date-field":
+            return <DateField {...props} />;
         default:
             return null;
     }
