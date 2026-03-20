@@ -11,7 +11,6 @@ export type FieldType = "text-field" | "select-field";
 interface TextInputFieldProps<
     TFieldValues extends FieldValues = FieldValues,
 > extends TextFieldProps<TFieldValues> {
-    /** Discriminant that identifies this as a text field */
     inputType: "text-field";
 }
 
